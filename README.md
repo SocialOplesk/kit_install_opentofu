@@ -26,7 +26,21 @@ sudo dnf install opentofu -y
 <br/>
 
 ### 🟢 Ejecutar opentofu para tener una infraestructura local, es decir modo offline.
+provider.tf
+```
+terraform{
+   required_providers{
+     docker = {
+      source  = "kreuzwerker/docker"
+      version = "3.9.0"
+     }
+   }
+}
 
+provider "docker"{}
+```
+
+main.tf
 ```
 resource "docker_image" "nginx"{
   name = "nginx:alpine"
